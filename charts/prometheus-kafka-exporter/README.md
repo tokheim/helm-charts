@@ -58,6 +58,7 @@ The following table lists the configurable parameters and their default values.
 | `rbac.pspEnabled`       | Specifies whether a PodSecurityPolicy should be created.| `true`               |
 | `serviceAccount.create` | Specifies whether a service account should be created.| `true`                 |
 | `serviceAccount.name`   | Name of the service account.|                                                  |
+| `args`                  | Additional arguments for exporter.                 | []                        |
 
 For more information please refer to the [kafka_exporter](https://github.com/danielqsj/kafka_exporter) documentation.
 

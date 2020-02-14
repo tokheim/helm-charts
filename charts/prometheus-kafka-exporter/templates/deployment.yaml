@@ -27,6 +27,9 @@ spec:
           {{- range $server := .Values.kafkaServer }}
             - '--kafka.server={{ $server }}'
           {{- end }}
+          {{- range $arg := .Values.args }}
+            - '{{ $arg }}'
+          {{- end }}
           name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
