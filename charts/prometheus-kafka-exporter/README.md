@@ -59,6 +59,10 @@ The following table lists the configurable parameters and their default values.
 | `serviceAccount.create` | Specifies whether a service account should be created.| `true`                 |
 | `serviceAccount.name`   | Name of the service account.|                                                  |
 | `args`                  | Additional arguments for exporter.                 | []                        |
+| `serviceMonitor.create` | Create a ServiceMontior resource scrape configuration.| `false`                |
+| `serviceMonitor.interval` | How frequently to scrape metrics                 | `50s`                     |
+| `serviceMonitor.selector` | Label Selector for Prometheus to find ServiceMonitors.| {}                   |
+| `serviceMonitor.namespace` | Optional namespace which Prometheus is running in | `nil`                   |
 
 For more information please refer to the [kafka_exporter](https://github.com/danielqsj/kafka_exporter) documentation.
 

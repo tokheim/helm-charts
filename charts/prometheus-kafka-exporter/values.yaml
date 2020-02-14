@@ -43,3 +43,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+serviceMonitor:
+  create: false
+  interval: 50s
+  selector: {}
+  namespace:

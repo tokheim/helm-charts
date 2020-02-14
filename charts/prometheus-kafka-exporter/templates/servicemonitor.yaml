@@ -1,0 +1,28 @@
+{{ if .Values.serviceMonitor.create }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ template "prometheus-kafka-exporter.fullname" . }}
+  {{- with .Values.serviceMonitor.namespace }}
+  namespace: {{ . }}
+  {{- end }}
+  labels:
+    app: {{ template "prometheus-kafka-exporter.name" . }}
+    chart: {{ template "prometheus-kafka-exporter.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    {{- if .Values.serviceMonitor.selector }}
+    {{ toYaml .Values.serviceMonitor.selector | nindent 4 }}
+    {{- end }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "prometheus-kafka-exporter.name" . }}
+      release: {{ .Release.Name }}
+  endpoints:
+  - port: http
+    interval: {{ .Values.serviceMonitor.interval }}
+  namespaceSelector:
+    matchNames:
+    - {{ .Release.Namespace }}
+{{ end }}
